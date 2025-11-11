@@ -17,11 +17,9 @@ EPOCHS = 30
 SEED = 42
 
 # --------------------------------------------------------------
-# 1️⃣ Load dataset (train/validation split)
+#  Load dataset (train/validation split)
 # --------------------------------------------------------------
-print("📁 Loading dataset from:", DATA_DIRECTORY)
-
-
+print(" Loading dataset from:", DATA_DIRECTORY)
 
 # Load training dataset
 train_ds = tf.keras.utils.image_dataset_from_directory(
@@ -43,16 +41,13 @@ val_ds = tf.keras.utils.image_dataset_from_directory(
     batch_size=BATCH_SIZE
 )
 
-# ✅ Save class names before prefetching (important fix)
-
-
+#  Save class names before prefetching (important fix)
 class_names = train_ds.class_names
 num_classes = len(class_names)
 
-print(f"\n✅ Loaded {num_classes} classes: {class_names}")
-
+print(f"\n Loaded {num_classes} classes: {class_names}")
 # --------------------------------------------------------------
-# 2️⃣ Optimize dataset pipeline
+# 2 Optimize dataset pipeline
 # --------------------------------------------------------------
 AUTOTUNE = tf.data.AUTOTUNE
 train_ds = train_ds.cache().shuffle(1000).prefetch(buffer_size=AUTOTUNE)
@@ -85,13 +80,13 @@ model = models.Sequential([
 model.summary()
 
 # --------------------------------------------------------------
-# 4️⃣ Model Summary
+#  Model Summary
 # --------------------------------------------------------------
-print("\n🧠 Model Summary:")
+print("\n Model Summary:")
 model.summary()
 
 # --------------------------------------------------------------
-# 5️⃣ Compile Model
+# Compile Model
 # --------------------------------------------------------------
 
 
